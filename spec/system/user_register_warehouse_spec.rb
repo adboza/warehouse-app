@@ -34,6 +34,7 @@ describe 'Usuário cadastra um galpão' do
     expect(page).to have_content 'Rio de Janeiro'
     expect(page).to have_content 'RIO'
     expect(page).to have_content '32000 m2'
+    expect(page).to have_content 'Galpão cadastrado com sucesso'
 
   end
 end

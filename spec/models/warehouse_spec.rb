@@ -61,7 +61,15 @@ RSpec.describe Warehouse, type: :model do
       end
       it 'false when zipcode length is not between 8 and 9 chars' do
         #Arrange
-        warehouse = Warehouse.new(name: 'Guarulhos', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep:'12345-6789', description:'Galpão destinado para cargas internacionais')
+        warehouse = Warehouse.new(name: 'Guarulhos', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep:'123456', description:'Galpão destinado para cargas internacionais')
+        #Act
+        result = warehouse.valid?
+        #Assert
+        expect(result).to eq false
+      end
+      it 'false when zipcode has irregular chars' do
+        #Arrange
+        warehouse = Warehouse.new(name: 'Guarulhos', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep:'1234546a', description:'Galpão destinado para cargas internacionais')
         #Act
         result = warehouse.valid?
         #Assert

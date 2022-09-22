@@ -7,11 +7,9 @@ class ZipcodeValidator < ActiveModel::Validator
     elsif record.cep.length < 8
       record.errors.add :base, "Invalid zipcode, small"
     elsif record.cep.length >9
-      record.errors.add :base, "Invalid zipcode, large"    
-      
+      record.errors.add :base, "Invalid zipcode, large"      
     else
       message = "Is it supposed to happen?"
     end
-  end
-  
+  end  
 end

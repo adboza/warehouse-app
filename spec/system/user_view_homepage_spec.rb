@@ -41,6 +41,16 @@ describe 'Usuario visita tela inicial' do
     #Assert
     expect(page).to have_content('Não existem galpões cadastrados!')
   end
+  it 'e vê menu com link para fornecedores' do
+    #Arrange
+    visit(root_path)
+    #Act
+    within('nav') do
+      click_on 'Fornecedores'
+    end
+    #Assert
+    expect(current_path).to eq suppliers_path
+  end
 
   
 end

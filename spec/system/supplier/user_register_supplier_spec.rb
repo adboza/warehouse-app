@@ -15,6 +15,7 @@ describe 'Usuário cadastra um fornecedor' do
     expect(page).to have_field('Cidade')
     expect(page).to have_field('Estado')
     expect(page).to have_field('E-mail')
+    expect(page).to have_field('Telefone para contato')
 
   end
   it 'com sucesso' do
@@ -30,6 +31,7 @@ describe 'Usuário cadastra um fornecedor' do
     fill_in('Cidade', with: 'Rio de Janeiro')
     fill_in 'Estado', with: 'RJ'
     fill_in 'E-mail', with: 'contato@boza.com.br'
+    fill_in 'Telefone para contato', with: '554132771841'
     click_on 'Enviar'
     #Assert
     expect(current_path).to eq suppliers_path

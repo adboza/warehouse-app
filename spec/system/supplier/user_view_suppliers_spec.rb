@@ -13,9 +13,9 @@ describe 'Usuário vê  fornecedores' do
   it 'e visualiza lista de fornecedores' do
     #Arrange
     Supplier.create!(
-      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR')
+      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
       Supplier.create!(
-        corporate_name: 'Carloto LTDA', brand_name: 'Carloto', registration_number: '43447213000102', city: 'Campo Largo', full_address: 'Torre da Indústria, 1', email: 'vendas@carloto.com.br', state: 'PR')
+        corporate_name: 'Carloto LTDA', brand_name: 'Carloto', registration_number: '43447213000102', city: 'Campo Largo', full_address: 'Torre da Indústria, 1', email: 'vendas@carloto.com.br', state: 'PR', phone_number: '554132321877')
     #Act
     visit root_path
     click_on 'Fornecedores'

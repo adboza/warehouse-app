@@ -4,7 +4,7 @@ describe 'Usuário vê detalhes do fornecedor' do
   it 'a partir da tela inicial' do
     #Arrange
     Supplier.create!(
-      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR')
+      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
       #Act
       visit root_path
       click_on 'Fornecedores'
@@ -19,7 +19,7 @@ describe 'Usuário vê detalhes do fornecedor' do
   it 'e volta para a tela inicial' do
     #Arrange
     Supplier.create!(
-      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR')
+      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     #Act
     visit root_path
     click_on 'Fornecedores'

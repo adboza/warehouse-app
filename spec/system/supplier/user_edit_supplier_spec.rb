@@ -4,7 +4,7 @@ describe 'Usuário edita um Fornecedor' do
   it 'a partir da página de detalhes do fornecedor' do
     #Arrange
     Supplier.create!(
-      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR')
+      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
  
     #Act
     visit root_path
@@ -20,12 +20,13 @@ describe 'Usuário edita um Fornecedor' do
     expect(page).to have_field('Cidade')
     expect(page).to have_field('Estado')
     expect(page).to have_field('E-mail')
+    expect(page).to have_field('Telefone para contato')
   end
 
   it 'com sucesso' do
     #Arrange
     Supplier.create!(
-      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR')
+      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     #Act
     visit root_path
     click_on 'Fornecedores'
@@ -43,7 +44,7 @@ describe 'Usuário edita um Fornecedor' do
   it 'com preenchimento incorreto' do
     #Arrange
     Supplier.create!(
-      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR')
+      corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     #Act
     visit root_path
     click_on 'Fornecedores'

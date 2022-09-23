@@ -38,6 +38,6 @@ class SuppliersController < ApplicationController
 
   private
   def supplier_params
-    params.require(:supplier).permit(:corporate_name, :registration_number, :state, :email, :full_address, :brand_name, :city)
+    params.require(:supplier).permit(:corporate_name, :registration_number, :state, :email, :full_address, :brand_name, :city, :phone_number)
   end
 end

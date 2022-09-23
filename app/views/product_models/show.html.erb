@@ -1,0 +1,28 @@
+<h1>Modelo de Produto</h1>
+<h2><%= @product_model.name %></h2>
+
+<dt>
+  <dt>Nome:</dt>
+  <dd><%= @product_model
+  .name %></dd>
+  <dt>Peso:</dt>
+  <dd><%= @product_model
+  .weight %>g </dd>
+  <dt>ALtura:</dt>
+  <dd><%= @product_model
+  .height %>cm</dd>
+  <dt>Largura:</dt>
+  <dd><%= @product_model
+  .width %>cm</dd>
+  <dt>Profundidade:</dt>
+  <dd><%= @product_model
+  .depth %>cm</dd>
+  <dt>SKU:</dt>
+  <dd><%= @product_model
+  .sku %></dd>
+  <dt>Fornecedor:</dt>
+  <dd><%= @product_model
+  .supplier.brand_name %></dd>
+</dt>
+
+<div><%= link_to 'Voltar', root_path%></div>

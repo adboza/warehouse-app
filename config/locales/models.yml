@@ -2,10 +2,10 @@ pt-BR:
   activerecord:
     models:
       warehouse: 'Galpão'
-      supplier: 'Fornecedor'
+      supplier: 'Fornecedor'      
     attributes:
       warehouse:
-        name: "Nome"
+        name: 'Nome'
         code: 'Código'
         description: 'Descrição'
         area: 'Área'
@@ -21,4 +21,6 @@ pt-BR:
         state: 'Estado'
         email: 'E-mail'
         phone_number: 'Telefone para contato'
+      
+
       

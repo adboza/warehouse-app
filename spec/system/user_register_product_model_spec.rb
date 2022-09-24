@@ -6,7 +6,7 @@ describe 'registrar modelo de produto' do
     supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos LTDA', brand_name: 'Samsung', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     other_supplier = Supplier.create!(corporate_name: 'LG Brasil LTDA', brand_name: 'LG', registration_number: '45447223000102', city: 'São Paulo', full_address: 'Av da Indústria, 1', email: 'vendas@boza.com.br', state: 'SP', phone_number: '554132771841')
 
-    ProductModel.create!(name: 'TV 32', weight: 8000 , width: 70, height:45, depth: 10, sku: 'TV32-SAMSU-XPT090', supplier: supplier)
+    ProductModel.create!(name: 'TV 32', weight: 8000 , width: 70, height:45, depth: 10, sku: 'TV32-SAMSU-XPT000', supplier: supplier)
     #Act
     visit root_path
     click_on 'Modelos de Produtos'

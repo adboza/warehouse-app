@@ -1,7 +1,6 @@
 require 'rails_helper'
 
-  #validates :registration_number, uniqueness: true
-  # supplier = Supplier.new(corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
+  
 RSpec.describe Supplier, type: :model do
   describe '#valid?' do
     context 'presence' do
@@ -14,6 +13,7 @@ RSpec.describe Supplier, type: :model do
         #Assert
         expect(result).to eq false
       end
+      
       it 'false when registration number is empty' do
         #Arrange
         supplier = Supplier.new(corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')

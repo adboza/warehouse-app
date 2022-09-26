@@ -135,6 +135,15 @@ RSpec.describe ProductModel, type: :model do
       #Assert
       expect(result).to eq false
     end
+
+    it 'supplier is mandatory' do
+      #Arrange
+      pm = ProductModel.new(name: 'TV 32', weight: 8000 , width: 10, height: 100, depth: '15', sku: 'TV32-SAMSU-XPT090', supplier: nil)
+      #Act 
+      result = pm.valid?
+      #Assert
+      expect(result).to eq false
+    end
   
   end
 end

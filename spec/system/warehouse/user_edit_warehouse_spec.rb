@@ -3,7 +3,9 @@ require 'rails_helper'
 describe 'Usuário edita um Galpão' do
   it 'a partir da página de detalhes' do
     #Arrange
-     Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano', cep: '91000-000')
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
+    Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano', cep: '91000-000')
  
     #Act
     visit root_path
@@ -22,6 +24,8 @@ describe 'Usuário edita um Galpão' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano de logística', cep: '91000-000')
     #Act
     visit root_path
@@ -39,6 +43,8 @@ describe 'Usuário edita um Galpão' do
 
   it 'com preenchimento incorreto' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano de logística', cep: '91000-000')
     #Act
     visit root_path

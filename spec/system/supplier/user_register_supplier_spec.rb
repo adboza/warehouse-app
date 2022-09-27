@@ -1,8 +1,11 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 describe 'Usuário cadastra um fornecedor' do
   it 'a partir da tela inicial' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     #Act
     visit root_path
     click_on 'Fornecedores'
@@ -20,6 +23,8 @@ describe 'Usuário cadastra um fornecedor' do
   end
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     #Act
     visit root_path
     click_on 'Fornecedores'
@@ -43,6 +48,8 @@ describe 'Usuário cadastra um fornecedor' do
   end
   it 'com dados incompletos' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     #Act
     visit root_path
     click_on 'Fornecedores'

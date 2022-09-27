@@ -3,6 +3,8 @@ require 'rails_helper'
 describe '' do
   it  'e vê informações adicionais' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     w = Warehouse.new(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep:'15000-000', description:'Galpão destinado para cargas internacionais')
     w.save
     #Act
@@ -19,6 +21,8 @@ describe '' do
   end
   it 'e volta para a tela inicial' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     w = Warehouse.create(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep:'15000-000', description:'Galpão destinado para cargas internacionais')
     
     #Act

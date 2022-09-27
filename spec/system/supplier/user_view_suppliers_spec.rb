@@ -1,9 +1,10 @@
 require 'rails_helper'
-
+include Warden::Test::Helpers
 describe 'Usuário vê  fornecedores' do
   it 'a partir do menu' do
     #Arrange
-    
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     #Act
     visit root_path
     click_on 'Fornecedores'
@@ -12,6 +13,8 @@ describe 'Usuário vê  fornecedores' do
   end
   it 'e visualiza lista de fornecedores' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     Supplier.create!(
       corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
       Supplier.create!(
@@ -28,6 +31,8 @@ describe 'Usuário vê  fornecedores' do
   end
   it 'e não existem fornecedores cadastrados' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     #Act
     visit root_path
     click_on 'Fornecedores'

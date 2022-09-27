@@ -1,8 +1,11 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 describe 'Usuário edita um Fornecedor' do
   it 'a partir da página de detalhes do fornecedor' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     Supplier.create!(
       corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
  
@@ -25,6 +28,8 @@ describe 'Usuário edita um Fornecedor' do
 
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     Supplier.create!(
       corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     #Act
@@ -43,6 +48,8 @@ describe 'Usuário edita um Fornecedor' do
 
   it 'com preenchimento incorreto' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     Supplier.create!(
       corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     #Act

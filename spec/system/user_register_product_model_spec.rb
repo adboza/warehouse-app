@@ -3,6 +3,8 @@ require 'rails_helper'
 describe 'registrar modelo de produto' do
   it 'com sucesso' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos LTDA', brand_name: 'Samsung', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     other_supplier = Supplier.create!(corporate_name: 'LG Brasil LTDA', brand_name: 'LG', registration_number: '45447223000102', city: 'São Paulo', full_address: 'Av da Indústria, 1', email: 'vendas@boza.com.br', state: 'SP', phone_number: '554132771841')
 
@@ -29,6 +31,8 @@ describe 'registrar modelo de produto' do
 
   it 'deve preencher todos os campos' do
     #Arrange
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos LTDA', brand_name: 'Samsung', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
     #Act
     visit root_path

@@ -1,9 +1,10 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 describe 'Usuário se autentica' do
   it 'com sucesso' do
     #Arrange
-    User.create!(email: 'joao@email.com', password: 'password')
+    User.create!(nome: 'Joao', email: 'joao@email.com', password: 'password')
     #Act
     visit root_path
     click_on 'Entrar'

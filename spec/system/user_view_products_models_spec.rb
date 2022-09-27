@@ -1,4 +1,5 @@
 require 'rails_helper'
+include Warden::Test::Helpers
 
 describe 'Usuario ve modelos de produtos' do
 
@@ -33,7 +34,7 @@ describe 'Usuario ve modelos de produtos' do
   it 'com sucesso' do
     #Arrange
     user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
-    login_as(user, :scope => :user)
+    login_as(user)
     supplier = Supplier.create!(corporate_name: 'Samsung Eletronicos LTDA', brand_name: 'Samsung', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
 
     ProductModel.create!(name: 'TV 32', weight: 8000 , width: 70, height:45, depth: 10, sku: 'TV32-SAMSU-XPT090', supplier: supplier)
@@ -57,7 +58,8 @@ describe 'Usuario ve modelos de produtos' do
 
   it 'e não existem produtos cadastrados' do
     #Arrange
-    
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
+    login_as(user)
     #Act
     visit root_path
     within('nav') do

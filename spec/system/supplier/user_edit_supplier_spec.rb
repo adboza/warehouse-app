@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 describe 'Usuário edita um Fornecedor' do
   it 'a partir da página de detalhes do fornecedor' do

@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Warden::Test::Helpers
 
 describe 'Usuário cadastra um fornecedor' do
   it 'a partir da tela inicial' do

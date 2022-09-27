@@ -1,5 +1,5 @@
 require 'rails_helper'
-include Warden::Test::Helpers
+
 describe 'Usuário vê  fornecedores' do
   it 'a partir do menu' do
     #Arrange

@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 describe 'Usuário remove um galpão' do
   it 'com sucesso' do
     #Arrange

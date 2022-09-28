@@ -1,4 +1,6 @@
 pt-BR:
+  edit_function: 'Editar'
+  back_function: 'Voltar'
   activerecord:
     models:
       warehouse: 'Galpão'
@@ -16,6 +18,7 @@ pt-BR:
         corporate_name: 'Razão Social'
         brand_name: 'Nome Fantasia'
         registration_number: 'CNPJ'
+        registration_number_doc: 'Documento'
         full_address: 'Endereço'
         city: 'Cidade'
         state: 'Estado'

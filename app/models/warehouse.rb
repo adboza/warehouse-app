@@ -4,4 +4,7 @@ class Warehouse < ApplicationRecord
   #validates :cep, length: { in: 8..9 }
   validates_with ZipcodeValidator, fields: [:cep]   
   
+  def full_description
+    "#{code} - #{name}"
+  end
 end

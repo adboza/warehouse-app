@@ -62,4 +62,15 @@ RSpec.describe Supplier, type: :model do
       expect(result).to eq false
     end
   end
+  describe '#full_description' do
+    it 'exibe o nome fantasia, razão social e o CNPJ' do
+      #Arrange
+      s = Supplier.new(corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102')
+      #Act
+      result = s.full_description()
+      #Assert
+      expect(result).to eq('BOZA - BOZA LTDA - CNPJ: 43447223000102')
+
+    end
+  end
 end

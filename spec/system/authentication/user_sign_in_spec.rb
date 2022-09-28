@@ -5,7 +5,7 @@ describe 'Usuário se autentica' do
     #Arrange
     User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')
     #Act
-    visit root_path
+    visit user_session_path
     within('nav') do
       click_on 'Entrar'
     end

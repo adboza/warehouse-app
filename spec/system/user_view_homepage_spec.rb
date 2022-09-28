@@ -13,6 +13,17 @@ describe 'Usuario visita tela inicial' do
     expect(page).to have_link('Galpões & Estoque', href: root_path)
   end
 
+  it 'e é redirecionado para tela de login' do
+    # Arrange
+
+    #Act
+    visit(root_path)    
+
+    #Assert
+    expect(current_path).to eq user_session_path
+    
+  end
+
   it 'e vê galpões cadastrados' do
     #arrange
     user = User.create!(name: 'Joao', email: 'joao@email.com', password: 'password')

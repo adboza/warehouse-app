@@ -1,7 +1,7 @@
 <h1>Modelo de Produto</h1>
 <h2><%= @product_model.name %></h2>
 
-<dt>
+<dl>
   <dt>Nome:</dt>
   <dd><%= @product_model
   .name %></dd>
@@ -23,6 +23,6 @@
   <dt>Fornecedor:</dt>
   <dd><%= @product_model
   .supplier.brand_name %></dd>
-</dt>
+</dl>
 
 <div><%= link_to 'Voltar', root_path%></div>

@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe 'Usuario visita tela inicial' do
+ 
   it 'e vê o nome da app' do
     # Arrange
 
@@ -9,6 +10,7 @@ describe 'Usuario visita tela inicial' do
 
     #Assert
     expect(page).to have_content('Galpões & Estoque')
+    #expect(page).to have_
   end
 
   it 'e vê galpões cadastrados' do

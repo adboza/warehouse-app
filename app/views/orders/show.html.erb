@@ -1,8 +1,6 @@
-<h1>Order.model_name.human</h1>
-
+<h1>Detalhes do Pedido</h1>
+<h2><%= Order.model_name.human %> <%= @order.code %></h2>
 <dl>
-  <dt><%= Order.human_attribute_name(:code) %>:</dt>
-    <dd><%= @order.code %></dd>
   <dt><%= Order.human_attribute_name(:warehouse_id) %>:</dt>
     <dd><%= @order.warehouse.full_description %></dd>
   <dt><%= Order.human_attribute_name(:supplier_id) %>:</dt>
@@ -11,4 +9,8 @@
     <dd><%= @order.user.description %>  </dd>
   <dt><%= Order.human_attribute_name(:estimated_delivery_date) %>:</dt>
     <dd><%= I18n.localize(@order.estimated_delivery_date) %></dd>
+  <dt><%= Order.human_attribute_name(:code) %>:</dt>
+    <dd><%= @order.code %></dd>
 </dl>
+<div><%= link_to t(:edit_function), edit_order_path(@order.id)%></div>
+<div><%= link_to t(:back_function), root_path%></div>

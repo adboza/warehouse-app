@@ -86,5 +86,19 @@ RSpec.describe Order, type: :model do
       expect(second_order.code).not_to eq first_order.code
       
     end
+
+    it 'e não deve ser modificado' do
+      #Arrange
+      user = User.create!(name: 'Sergio', email: 'sergio@email.com', password: '12345678')
+      login_as(user)
+      warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano de logística', cep: '91000-000')
+      supplier = Supplier.create!(corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
+      order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 2.days.from_now)
+      original_code = order.code
+      #Act
+      order.update!(estimated_delivery_date: 1.month.from_now)
+      #Assert      
+      expect(order.code).to eq(original_code)
+    end
   end
 end

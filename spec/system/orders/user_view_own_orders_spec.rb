@@ -76,5 +76,30 @@ describe 'Usuário vê seus próprios pedidos' do
     expect(current_path).to eq root_path
     expect(page).to have_content 'Você não possui acesso a este pedido.'
   end
+  it 'e vê itens do pedido' do
+    #Arrange
+    supplier = Supplier.create!(corporate_name: 'ACME LTDA', brand_name: 'ACME', registration_number: '43447226000102', city: 'Bauru', full_address: 'Av das Palmas, 100', email: 'contato@acme.com', state: 'SP', phone_number: '551132771841')
+    product_a = ProductModel.create!(name: 'Produto A', weight: 8000 , width: 70, height:45, depth: 10, sku: 'TV32-SAMSU-XPT090', supplier: supplier)
+    product_b = ProductModel.create!(name: 'Produto B', weight: 3000 , width: 80, height:45, depth: 20, sku: 'SOUND-SAMSU-XPT090', supplier: supplier)
+    product_c = ProductModel.create!(name: 'Produto C', weight: 1000 , width: 30, height:15, depth: 20, sku: 'SOUND-SAMSU-TPT090', supplier: supplier)
+    
+    user = User.create!(name: 'Joao', email: 'joao@email.com', password: '12345678')    
+    warehouse = Warehouse.create!(name: 'Aeroporto SP', code: 'GRU', city: 'Guarulhos', area: 100_000, address: 'Avenida do Aeroporto, 1000', cep:'15000-000', description:'Galpão destinado para cargas internacionais')
+    
+    order = Order.create!(user: user, warehouse: warehouse, supplier: supplier, estimated_delivery_date: 1.day.from_now)
 
+    OrderItem.create!(product_model: product_a, order: order, quantity: 19)
+    OrderItem.create!(product_model: product_b, order: order, quantity: 12)
+
+    #Act
+    login_as user
+    visit root_path
+    click_on 'Meus Pedidos'
+    click_on order.code
+    #Assert
+    expect(page).to have_content 'Itens do Pedido'
+    expect(page).to have_content '19 x Produto A'
+    expect(page).to have_content '12 x Produto B'
+    expect(page).not_to have_content 'Produto C'
+  end
 end

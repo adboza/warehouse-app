@@ -15,10 +15,21 @@
     <dd><%= I18n.t(@order.status) %></dd>
 </dl>
 
-<% if @order.pending? %>
-<div><%= button_to 'Marcar como CANCELADO', canceled_order_path(@order.id) %></div>
-<div><%= button_to 'Marcar como ENTREGUE', delivered_order_path(@order.id) %></div>
-<% end %>
+<h2>Itens do Pedido</h2>
+<%= link_to 'Adicionar Item', new_order_order_item_path(order_id: @order.id) %>
+
+<ul>
+  <% @order.order_items.each do |item| %>
+  <li><%= item.quantity %> x <%= item.product_model.name %></li>
+  <% end %>
+</ul>
+
+<div>
+  <% if @order.pending? %>
+  <%= button_to 'Marcar como CANCELADO', canceled_order_path(@order.id) %>
+  <%= button_to 'Marcar como ENTREGUE', delivered_order_path(@order.id) %>
+  <% end %>
+</div>
 
 <div><%= link_to t(:edit_function), edit_order_path(@order.id)%></div>
 <div><%= link_to t(:back_function), root_path%></div>

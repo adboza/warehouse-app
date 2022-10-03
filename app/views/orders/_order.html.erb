@@ -7,4 +7,6 @@
     <dd><%= order.supplier.full_description %></dd>  
   <dt><%= Order.human_attribute_name(:estimated_delivery_date) %>:</dt>
     <dd><%= I18n.localize(order.estimated_delivery_date) %></dd>
+  <dt><%= Order.human_attribute_name(:status) %>:</dt>
+    <dd><%= I18n.t(order.status) %></dd>
 </dl> 

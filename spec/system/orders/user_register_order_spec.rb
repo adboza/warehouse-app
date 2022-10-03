@@ -32,6 +32,7 @@ describe 'Usuário cadastra um pedido' do
     expect(page).to have_content 'Galpão Destino: GRU - Aeroporto SP'
     expect(page).to have_content 'Fornecedor: ACME - ACME LTDA - CNPJ: 43447226000102'
     expect(page).to have_content 'Usuário Responsável: Sergio - sergio@email.com'
+    expect(page).to have_content 'Situação do Pedido: Pendente'
     expect(page).not_to have_content 'Maceio'
     expect(page).not_to have_content 'Spark'
     expect(page).to have_content "Data Prevista de Entrega: #{I18n.localize(Order.last.estimated_delivery_date)}"

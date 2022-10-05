@@ -31,4 +31,31 @@ RSpec.describe StockProduct, type: :model do
       expect(stock_product.serial_number).to eq(original_serial_number)
     end
   end
+  describe '#available?' do
+    it 'true se não tiver destino' do
+      #Arrange
+      user = User.create!(name: 'Sergio', email: 'sergio@email.com', password: '12345678')
+      warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano de logística', cep: '91000-000')      
+      supplier = Supplier.create!(corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
+      order = Order.create!(user: user, warehouse: warehouse,  status: :delivered, supplier: supplier, estimated_delivery_date: 2.days.from_now)
+      product = ProductModel.create!(name: 'Produto A', weight: 8000 , width: 70, height:45, depth: 10, sku: 'TV32-SAMSU-XPT090', supplier: supplier)
+      #Act
+      stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
+      #Assert
+      expect(stock_product.available?).to eq true
+    end
+    it 'false se tiver destino' do
+      #Arrange
+      user = User.create!(name: 'Sergio', email: 'sergio@email.com', password: '12345678')
+      warehouse = Warehouse.create!(name: 'Maceio', code: 'MCZ', city: 'Maceio', area: 50_000, address: 'Av Deodoro, 10', description: 'Galpão alagoano de logística', cep: '91000-000')      
+      supplier = Supplier.create!(corporate_name: 'BOZA LTDA', brand_name: 'BOZA', registration_number: '43447223000102', city: 'Curitiba', full_address: 'Torre da Indústria, 1', email: 'vendas@boza.com.br', state: 'PR', phone_number: '554132771841')
+      order = Order.create!(user: user, warehouse: warehouse,  status: :delivered, supplier: supplier, estimated_delivery_date: 2.days.from_now)
+      product = ProductModel.create!(name: 'Produto A', weight: 8000 , width: 70, height:45, depth: 10, sku: 'TV32-SAMSU-XPT090', supplier: supplier)
+      #Act
+      stock_product = StockProduct.create!(order: order, warehouse: warehouse, product_model: product)
+      stock_product.create_stock_product_destination!(recipient: 'Joao', address:'Rua pinheiro, 1 - Araraquara')
+      #Assert
+      expect(stock_product.available?).to eq false
+    end
+  end
 end

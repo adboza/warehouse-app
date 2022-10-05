@@ -9,7 +9,7 @@ describe 'Usuário vê  fornecedores' do
     visit root_path
     click_on 'Fornecedores'
     #Assert
-    
+    expect(current_path).to eq suppliers_path
   end
   it 'e visualiza lista de fornecedores' do
     #Arrange

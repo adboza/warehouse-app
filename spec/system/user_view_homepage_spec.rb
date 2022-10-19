@@ -10,7 +10,6 @@ describe 'Usuario visita tela inicial' do
 
     #Assert
     expect(page).to have_content('Galpões & Estoque')
-    expect(page).to have_link('Galpões & Estoque', href: root_path)
   end
 
   it 'e é redirecionado para tela de login' do
